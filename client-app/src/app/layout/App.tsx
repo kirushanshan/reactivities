@@ -7,28 +7,24 @@ import agent from '../api/agent';
 import LoadingCombonent from './LoadingCombonent';
 import { useStore } from '../stores/store';
 import { observer } from 'mobx-react-lite';
+import { Outlet, useLocation } from 'react-router-dom';
+import HomePage from '../../features/home/homePage';
 
 
 function App() {
 
-  const {activityStore} = useStore();
-
-  // then method take call back functio 
-  useEffect(() => {
-    activityStore.loadActivities();
-  }, [activityStore])
-
- 
-
-  if (activityStore.loadingInitial) return <LoadingCombonent content='Loading App'/>
+const location = useLocation()
 
   return (
     <Fragment>
-        <NavBar/>
-        <Container style={{marginTop: '7em'}}>
-          <ActivityDashBoard  />
-        </Container>
-
+      {location.pathname === '/' ? <HomePage/> : (
+        <>
+                    <NavBar/>
+              <Container style={{marginTop: '7em'}}>
+            <Outlet  />
+          </Container> 
+        </>
+      )}
     </Fragment>
   );
 }
