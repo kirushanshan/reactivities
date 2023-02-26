@@ -6,6 +6,7 @@ import LoadingCombonent from '../../../app/layout/LoadingCombonent';
 import { useStore } from "../../../app/stores/store";
 import ActivityDetails from "../details/ActivityDetails";
 import ActivityForm from "../form/ActivityForm";
+import ActivityFilters from './ActivityFilter';
 import ActivityList from "./ActivityList";
 
 
@@ -29,8 +30,9 @@ export default observer ( function ActivityDashBoard() {
                 <ActivityList/>
             </GridColumn>
             <GridColumn width='6'>
-                <h2>Activity filters</h2>
+                <ActivityFilters/>
             </GridColumn>
+            
         </Grid>
     )
 })
